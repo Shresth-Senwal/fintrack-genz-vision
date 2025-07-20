@@ -1,0 +1,34 @@
+[
+  {
+    "id": "txn1",
+    "amount": 25.50,
+    "description": "Coffee Shop",
+    "category": "Food & Drink",
+    "timestamp": "2025-07-18T09:30:00Z",
+    "type": "expense"
+  },
+  {
+    "id": "txn2",
+    "amount": 1200.00,
+    "description": "Salary",
+    "category": "Income",
+    "timestamp": "2025-07-01T08:00:00Z",
+    "type": "income"
+  },
+  {
+    "id": "txn3",
+    "amount": 60.00,
+    "description": "Groceries",
+    "category": "Food & Drink",
+    "timestamp": "2025-07-15T17:45:00Z",
+    "type": "expense"
+  },
+  {
+    "id": "txn4",
+    "amount": 15.00,
+    "description": "Movie Night",
+    "category": "Entertainment",
+    "timestamp": "2025-07-10T20:00:00Z",
+    "type": "expense"
+  }
+]
