@@ -91,7 +91,14 @@ const categoryIcons: Record<string, { icon: React.ComponentType<{ className?: st
   'Other': { icon: CreditCard, color: 'bg-indigo-100 text-indigo-700' }
 };
 
-export function Analytics() {
+/**
+ * Analytics Component Props
+ */
+interface AnalyticsProps {
+  onNavigateToAddTransaction?: () => void;
+}
+
+export function Analytics({ onNavigateToAddTransaction }: AnalyticsProps = {}) {
   const [transactions, setTransactions] = useState<Transaction[]>([]);
   const [selectedPeriod, setSelectedPeriod] = useState<'week' | 'month' | 'quarter'>('month');
 
@@ -240,23 +247,25 @@ export function Analytics() {
           <p className="text-muted-foreground mt-2">Insights into your spending patterns</p>
         </div>
 
-        {/* Period Selection */}
+        {/* Period Selection - Mobile Optimized */}
         <Card className="border shadow-sm bg-card">
-          <CardContent className="p-4">
-            <div className="flex items-center gap-2 justify-center">
-              <span className="text-sm font-medium text-muted-foreground">Time Period:</span>
-              {(['week', 'month', 'quarter'] as const).map((period) => (
-                <Button
-                  key={period}
-                  variant={selectedPeriod === period ? 'default' : 'outline'}
-                  size="sm"
-                  onClick={() => setSelectedPeriod(period)}
-                  className="capitalize"
-                >
-                  {period === 'week' ? 'Last 7 Days' : 
-                   period === 'month' ? 'Last Month' : 'Last 3 Months'}
-                </Button>
-              ))}
+          <CardContent className="p-3 sm:p-4">
+            <div className="flex flex-col sm:flex-row items-start sm:items-center gap-3 sm:gap-2 sm:justify-center">
+              <span className="text-sm font-medium text-muted-foreground whitespace-nowrap">Time Period:</span>
+              <div className="flex flex-wrap gap-2 w-full sm:w-auto">
+                {(['week', 'month', 'quarter'] as const).map((period) => (
+                  <Button
+                    key={period}
+                    variant={selectedPeriod === period ? 'default' : 'outline'}
+                    size="sm"
+                    onClick={() => setSelectedPeriod(period)}
+                    className="capitalize text-xs sm:text-sm flex-1 sm:flex-none min-w-[80px] px-2 sm:px-3"
+                  >
+                    {period === 'week' ? 'Last 7 Days' : 
+                     period === 'month' ? 'Last Month' : 'Last 3 Months'}
+                  </Button>
+                ))}
+              </div>
             </div>
           </CardContent>
         </Card>
@@ -438,7 +447,13 @@ export function Analytics() {
               <div className="text-muted-foreground mb-4">
                 Start adding transactions to see your financial analytics
               </div>
-              <Button variant="outline">
+              <Button 
+                variant="outline"
+                onClick={onNavigateToAddTransaction || (() => console.warn('Navigation function not provided'))}
+                className="hover:bg-primary hover:text-primary-foreground transition-colors border-primary/30 hover:border-primary"
+                aria-label="Navigate to add new transaction"
+              >
+                <Plus className="w-4 h-4 mr-2" />
                 Add Your First Transaction
               </Button>
             </CardContent>

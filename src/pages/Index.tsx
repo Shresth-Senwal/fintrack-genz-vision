@@ -126,7 +126,7 @@ const Index = () => {
       case 'add':
         return <AddTransaction />;
       case 'insights':
-        return <Analytics />;
+        return <Analytics onNavigateToAddTransaction={() => setActiveTab('add')} />;
       case 'profile':
         return <UserProfile />;
       default:

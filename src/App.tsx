@@ -23,6 +23,7 @@ import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { AnimatePresence } from "framer-motion";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
+import { GoalsProvider } from "@/contexts/GoalsContext";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
 import NotFound from "./pages/NotFound";
@@ -82,39 +83,41 @@ const App = () => (
   <QueryClientProvider client={queryClient}>
     <ThemeProvider defaultTheme="dark">
       <AuthProvider>
-        {/* TooltipProvider enables tooltips globally */}
-        <TooltipProvider>
-          {/* Toaster and Sonner provide notification systems */}
-          <Toaster />
-          <Sonner />
-          {/* BrowserRouter enables SPA navigation */}
-          <BrowserRouter>
-            <AnimatePresence mode="wait">
-              <Routes>
-                {/* Authentication route */}
-                <Route 
-                  path="/auth" 
-                  element={
-                    <PublicRoute>
-                      <Auth />
-                    </PublicRoute>
-                  } 
-                />
-                {/* Protected home page route */}
-                <Route 
-                  path="/" 
-                  element={
-                    <ProtectedRoute>
-                      <Index />
-                    </ProtectedRoute>
-                  } 
-                />
-                {/* Catch-all route for 404s; always keep last */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </AnimatePresence>
-          </BrowserRouter>
-        </TooltipProvider>
+        <GoalsProvider>
+          {/* TooltipProvider enables tooltips globally */}
+          <TooltipProvider>
+            {/* Toaster and Sonner provide notification systems */}
+            <Toaster />
+            <Sonner />
+            {/* BrowserRouter enables SPA navigation */}
+            <BrowserRouter>
+              <AnimatePresence mode="wait">
+                <Routes>
+                  {/* Authentication route */}
+                  <Route 
+                    path="/auth" 
+                    element={
+                      <PublicRoute>
+                        <Auth />
+                      </PublicRoute>
+                    } 
+                  />
+                  {/* Protected home page route */}
+                  <Route 
+                    path="/" 
+                    element={
+                      <ProtectedRoute>
+                        <Index />
+                      </ProtectedRoute>
+                    } 
+                  />
+                  {/* Catch-all route for 404s; always keep last */}
+                  <Route path="*" element={<NotFound />} />
+                </Routes>
+              </AnimatePresence>
+            </BrowserRouter>
+          </TooltipProvider>
+        </GoalsProvider>
       </AuthProvider>
     </ThemeProvider>
   </QueryClientProvider>
