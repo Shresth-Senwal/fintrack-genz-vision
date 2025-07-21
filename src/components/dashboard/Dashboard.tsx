@@ -25,6 +25,7 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card';
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
@@ -43,7 +44,8 @@ import {
   DollarSign,
   ArrowUpRight,
   ArrowDownRight,
-  Flame
+  Flame,
+  Zap
 } from 'lucide-react';
 
 import { AddTransaction } from './AddTransaction';
@@ -52,6 +54,7 @@ import { Analytics } from './Analytics';
 import { SavingsGoal } from './SavingsGoal';
 import { AchievementBadge } from './AchievementBadge';
 import { SpendingFeedback } from './SpendingFeedback';
+import { GamificationWidget } from '../gamification/GamificationWidget';
 
 interface Transaction {
   id: string;
@@ -274,13 +277,23 @@ export function Dashboard() {
               Level {summary.level}
             </motion.div>
             <motion.div 
-              className="flex items-center gap-1 sm:gap-2 bg-success/10 text-success px-2 sm:px-3 py-2 rounded-lg border border-success/20 min-h-[44px] flex items-center justify-center"
+              className="flex items-center gap-1 sm:gap-2 bg-success/10 text-success px-2 sm:px-3 py-2 rounded-lg border border-success/20 min-h-[44px] justify-center"
               whileHover={{ scale: 1.05 }}
               whileTap={{ scale: 0.95 }}
             >
               <Flame className="w-3 h-3 sm:w-4 sm:h-4" />
               <span className="text-xs sm:text-sm font-medium">{summary.streak}</span>
             </motion.div>
+            <Link to="/advanced">
+              <motion.div 
+                className="flex items-center gap-1 sm:gap-2 bg-purple-100 text-purple-600 px-2 sm:px-3 py-2 rounded-lg border border-purple-200 min-h-[44px] justify-center"
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                <Zap className="w-3 h-3 sm:w-4 sm:h-4" />
+                <span className="text-xs sm:text-sm font-medium">Advanced</span>
+              </motion.div>
+            </Link>
           </motion.div>
         </motion.div>
 
@@ -407,6 +420,11 @@ export function Dashboard() {
                   </Card>
                 </motion.div>
               ))}
+            </div>
+
+            {/* Gamification Widget */}
+            <div className="mb-8">
+              <GamificationWidget />
             </div>
 
             {/* Spending Feedback Component */}

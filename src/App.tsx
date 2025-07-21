@@ -24,8 +24,11 @@ import { AnimatePresence } from "framer-motion";
 import { AuthProvider, useAuth } from "@/contexts/AuthContext";
 import { ThemeProvider } from "@/contexts/ThemeContext";
 import { GoalsProvider } from "@/contexts/GoalsContext";
+import { GamificationProvider } from "@/contexts/GamificationContext";
+import { FinancialDataProvider } from "@/contexts/FinancialDataContext";
 import Index from "./pages/Index";
 import Auth from "./pages/Auth";
+import AdvancedFeatures from "./pages/AdvancedFeatures";
 import NotFound from "./pages/NotFound";
 
 // Create a single QueryClient instance for the app
@@ -84,39 +87,52 @@ const App = () => (
     <ThemeProvider defaultTheme="dark">
       <AuthProvider>
         <GoalsProvider>
-          {/* TooltipProvider enables tooltips globally */}
-          <TooltipProvider>
-            {/* Toaster and Sonner provide notification systems */}
-            <Toaster />
-            <Sonner />
-            {/* BrowserRouter enables SPA navigation */}
-            <BrowserRouter>
-              <AnimatePresence mode="wait">
-                <Routes>
-                  {/* Authentication route */}
-                  <Route 
-                    path="/auth" 
-                    element={
-                      <PublicRoute>
-                        <Auth />
-                      </PublicRoute>
-                    } 
-                  />
-                  {/* Protected home page route */}
-                  <Route 
-                    path="/" 
-                    element={
-                      <ProtectedRoute>
-                        <Index />
-                      </ProtectedRoute>
-                    } 
-                  />
-                  {/* Catch-all route for 404s; always keep last */}
-                  <Route path="*" element={<NotFound />} />
-                </Routes>
-              </AnimatePresence>
-            </BrowserRouter>
-          </TooltipProvider>
+          <GamificationProvider>
+            <FinancialDataProvider>
+              {/* TooltipProvider enables tooltips globally */}
+              <TooltipProvider>
+                {/* Toaster and Sonner provide notification systems */}
+                <Toaster />
+                <Sonner />
+                {/* BrowserRouter enables SPA navigation */}
+                <BrowserRouter>
+                  <AnimatePresence mode="wait">
+                    <Routes>
+                      {/* Authentication route */}
+                      <Route 
+                        path="/auth" 
+                        element={
+                          <PublicRoute>
+                            <Auth />
+                          </PublicRoute>
+                        } 
+                      />
+                      {/* Protected home page route */}
+                      <Route 
+                        path="/" 
+                        element={
+                          <ProtectedRoute>
+                            <Index />
+                          </ProtectedRoute>
+                        } 
+                      />
+                      {/* Advanced Features page */}
+                      <Route 
+                        path="/advanced" 
+                        element={
+                          <ProtectedRoute>
+                            <AdvancedFeatures />
+                          </ProtectedRoute>
+                        } 
+                      />
+                      {/* Catch-all route for 404s; always keep last */}
+                      <Route path="*" element={<NotFound />} />
+                    </Routes>
+                  </AnimatePresence>
+                </BrowserRouter>
+              </TooltipProvider>
+            </FinancialDataProvider>
+          </GamificationProvider>
         </GoalsProvider>
       </AuthProvider>
     </ThemeProvider>

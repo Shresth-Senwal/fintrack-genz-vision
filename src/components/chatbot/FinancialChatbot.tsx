@@ -205,6 +205,7 @@ export function FinancialChatbot({ userData }: FinancialChatbotProps) {
         transition={{ duration: 0.3 }}
       >
         <Button
+          data-chatbot-trigger
           onClick={() => {
             setIsMinimized(false);
             setShowQuickActions(true);
