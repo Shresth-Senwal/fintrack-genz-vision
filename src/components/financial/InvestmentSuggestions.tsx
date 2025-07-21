@@ -295,11 +295,13 @@ ${suggestion.disclaimer || 'Past performance does not guarantee future returns.'
 
       {/* Suggestions List */}
       <Tabs defaultValue="all" className="w-full">
-        <TabsList className="grid w-full grid-cols-4">
-          <TabsTrigger value="all">All</TabsTrigger>
-          <TabsTrigger value="mutual-funds">Mutual Funds</TabsTrigger>
-          <TabsTrigger value="fixed-deposits">Fixed Deposits</TabsTrigger>
-          <TabsTrigger value="others">Others</TabsTrigger>
+        <TabsList className="bg-muted rounded-lg shadow-sm p-1 flex gap-2 mb-8">
+          <div className="flex sm:contents gap-1 overflow-x-auto scrollbar-hide">
+            <TabsTrigger value="all" className="flex-shrink-0 px-3 py-2 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm">All</TabsTrigger>
+            <TabsTrigger value="mutual-funds" className="flex-shrink-0 px-3 py-2 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm">Mutual Funds</TabsTrigger>
+            <TabsTrigger value="fixed-deposits" className="flex-shrink-0 px-3 py-2 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm">Fixed Deposits</TabsTrigger>
+            <TabsTrigger value="others" className="flex-shrink-0 px-3 py-2 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm">Others</TabsTrigger>
+          </div>
         </TabsList>
 
         <TabsContent value="all" className="space-y-4 mt-6">

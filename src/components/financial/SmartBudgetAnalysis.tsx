@@ -319,10 +319,12 @@ ${recommendation.steps.map((step, index) => `${index + 1}. ${step}`).join('\n')}
 
       {/* Detailed Analysis */}
       <Tabs defaultValue="categories" className="w-full">
-        <TabsList className="grid w-full grid-cols-3">
-          <TabsTrigger value="categories">Categories</TabsTrigger>
-          <TabsTrigger value="trends">Trends</TabsTrigger>
-          <TabsTrigger value="recommendations">Recommendations</TabsTrigger>
+        <TabsList className="bg-muted rounded-lg shadow-sm p-1 flex gap-2 mb-8">
+          <div className="flex sm:contents gap-1 overflow-x-auto scrollbar-hide">
+            <TabsTrigger value="categories" className="flex-shrink-0 px-3 py-2 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm">Categories</TabsTrigger>
+            <TabsTrigger value="trends" className="flex-shrink-0 px-3 py-2 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm">Trends</TabsTrigger>
+            <TabsTrigger value="recommendations" className="flex-shrink-0 px-3 py-2 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm">Recommendations</TabsTrigger>
+          </div>
         </TabsList>
 
         <TabsContent value="categories" className="space-y-4 mt-6">

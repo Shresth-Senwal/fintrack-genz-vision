@@ -235,9 +235,11 @@ export function BankStatementImport({
       </CardHeader>
       <CardContent>
         <Tabs defaultValue="import" className="w-full">
-          <TabsList className="grid w-full grid-cols-2">
-            <TabsTrigger value="import">Import Statement</TabsTrigger>
-            <TabsTrigger value="history">Import History</TabsTrigger>
+          <TabsList className="bg-muted rounded-lg shadow-sm p-1 flex gap-2 mb-8">
+            <div className="flex sm:contents gap-1 overflow-x-auto scrollbar-hide">
+              <TabsTrigger value="import" className="flex-shrink-0 px-3 py-2 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm">Import Statement</TabsTrigger>
+              <TabsTrigger value="history" className="flex-shrink-0 px-3 py-2 text-xs sm:text-sm whitespace-nowrap data-[state=active]:bg-background data-[state=active]:shadow-sm">Import History</TabsTrigger>
+            </div>
           </TabsList>
 
           <TabsContent value="import" className="space-y-6 mt-6">
