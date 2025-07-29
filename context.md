@@ -52,7 +52,7 @@ Fintrack GenZ Vision is a modern, modular, full-stack financial tracking applica
 - **Goals**: Set, track, and update savings goals; add money dialogs, progress badges, achievement tracking, templates, and mobile-optimized UI. See `GOALS_IMPLEMENTATION_SUMMARY.md` for full details.
 - **Transactions**: Add, view, and manage transaction history.
 - **Analytics**: Visual feedback on spending, savings, and financial habits. Analytics page now includes a working "Add Your First Transaction" button with navigation and accessibility improvements. See `ANALYTICS_BUTTON_FIX.md`.
-- **AI Chatbot**: Financial assistant for user queries, powered by Gemini Flash 2 (Google). Provides real-time, personalized financial advice, budgeting tips, and interactive chat UI. See `AI_CHATBOT_SETUP.md` for setup and customization.
+- **AI Chatbot**: Financial assistant for user queries, powered by Gemini 2.5 Flash Lite (Google). Provides real-time, personalized financial advice, budgeting tips, and interactive chat UI. See `AI_CHATBOT_SETUP.md` for setup and customization.
 - **Profile**: User profile management and settings.
 - **Dark Mode**: Theme toggle with persistent state, system detection, accessibility, and smooth transitions. See `DARK_MODE_SETUP.md` for implementation details.
 - **Mobile Optimization**: Responsive design, touch-friendly UI, dynamic positioning, and mobile-first layouts. Header, chatbot, and analytics components optimized for mobile. See `MOBILE_OPTIMIZATION_SUMMARY.md`.
@@ -65,7 +65,7 @@ Fintrack GenZ Vision is a modern, modular, full-stack financial tracking applica
 
 ## Endpoints & Data Contracts
 - **Firebase**: Authentication and (planned) data storage.
-- **AI Service**: API contract defined in `aiService.ts`.
+- **AI Service**: API contract defined in `aiService.ts`. Now uses Gemini 2.5 Flash Lite model endpoint for all AI-powered features.
 - **Data Validation**: All user input is validated and sanitized at both UI and service layers.
 
 ## Component Architecture
@@ -109,5 +109,5 @@ Fintrack GenZ Vision is a modern, modular, full-stack financial tracking applica
 - Code must be modular, well-documented, and fully tested.
 - All changes must update this context file and follow project standards.
 
-## Change Log
-- 2025-07-21: Context file updated for architecture, features, mobile optimization, goals, authentication, AI chatbot, analytics button fix, and outstanding issues.
+- 2025-07-29: Updated AI model to Gemini 2.5 Flash Lite in service and documentation.
+ 2025-07-21: Context file updated for architecture, features, mobile optimization, goals, authentication, AI chatbot, analytics button fix, and outstanding issues.

@@ -21,7 +21,7 @@ interface GeminiResponse {
 
 class AIService {
   private apiKey: string;
-  private baseUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent';
+  private baseUrl = 'https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-lite:generateContent';
 
   constructor() {
     this.apiKey = import.meta.env.VITE_GEMINI_API_KEY;
